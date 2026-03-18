@@ -1,0 +1,7 @@
+admin logs
+password: admin123
+username: admin@sjp2.com
+
+employer logs
+password: employer@example.com
+username: pass123
