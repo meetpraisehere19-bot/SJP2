@@ -5,3 +5,14 @@ username: admin@sjp2.com
 employer logs
 password: employer@example.com
 username: pass123
+
+
+RUNNING THE APP
+
+BACKEND
+cd C:\Users\Prazz\OneDrive\Desktop\SJP2\server
+npm run dev
+
+FRONTEND
+cd C:\Users\Prazz\OneDrive\Desktop\SJP2\client
+npm run dev
