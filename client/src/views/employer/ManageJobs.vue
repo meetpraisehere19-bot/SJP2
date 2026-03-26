@@ -78,6 +78,7 @@ export default {
     async fetchJobs() {
       this.loading = true
       try {
+        // Restricted endpoint returns only jobs created by current employer.
         const { data } = await api.get('/jobs/employer/mine')
         this.jobs = data
       } catch (err) {
@@ -88,6 +89,7 @@ export default {
     async toggleJob(job) {
       try {
         await api.put(`/jobs/${job._id}`, { isActive: !job.isActive })
+        // Reflect active/closed state immediately after successful API update.
         job.isActive = !job.isActive
       } catch (err) {
         console.error(err)
@@ -97,6 +99,7 @@ export default {
       if (!confirm('Are you sure you want to delete this job?')) return
       try {
         await api.delete(`/jobs/${id}`)
+        // Remove deleted row locally to avoid an extra fetch.
         this.jobs = this.jobs.filter(j => j._id !== id)
       } catch (err) {
         console.error(err)

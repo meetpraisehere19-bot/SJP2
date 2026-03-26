@@ -90,11 +90,13 @@ export default {
       this.success = false
       this.error = ''
       try {
+        // Use multipart form-data so text fields and optional resume can be sent together.
         const fd = new FormData()
         Object.keys(this.form).forEach(k => fd.append(k, this.form[k]))
         fd.append('skills', this.skillsStr)
         if (this.file) fd.append('file', this.file)
         const { data } = await api.put('/users/profile', fd, { headers: { 'Content-Type': 'multipart/form-data' } })
+        // Keep the global user store in sync with persisted profile changes.
         store.updateUser(data)
         this.success = true
       } catch (err) {

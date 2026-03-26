@@ -68,8 +68,10 @@ export default {
     try {
       const { data } = await api.get('/applications/mine')
       this.applications = data
+      // Derive lightweight summary cards from the same API payload.
       this.stats.total = data.length
       this.stats.pending = data.filter(a => a.status === 'pending').length
+      // Treat interview as a shortlisted pipeline stage for dashboard reporting.
       this.stats.shortlisted = data.filter(a => ['shortlisted', 'interview'].includes(a.status)).length
       this.stats.accepted = data.filter(a => a.status === 'accepted').length
     } catch (err) {

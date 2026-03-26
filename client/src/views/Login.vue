@@ -47,6 +47,7 @@ export default {
       this.loading = true
       try {
         const { data } = await api.post('/auth/login', { email: this.email, password: this.password })
+        // Prevent role-tab mismatch (for example, logging in as student on employer tab).
         if (data.user.role !== this.role) {
           this.error = `This account is not a ${this.role} account`
           this.loading = false

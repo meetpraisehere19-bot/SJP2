@@ -68,6 +68,7 @@ export default {
     async fetchJobs() {
       this.loading = true
       try {
+        // Build query params from active filters and current page.
         const params = { page: this.page, limit: 12 }
         if (this.search) params.search = this.search
         if (this.typeFilter) params.type = this.typeFilter
@@ -82,6 +83,7 @@ export default {
     },
     debounceSearch() {
       clearTimeout(this.timer)
+      // Debounce avoids firing an API call on every keystroke.
       this.timer = setTimeout(() => { this.page = 1; this.fetchJobs() }, 400)
     },
     typeBadge(type) {

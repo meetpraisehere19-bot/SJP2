@@ -82,10 +82,12 @@ export default {
       this.success = false
       this.error = ''
       try {
+        // Submit company fields and optional logo in one multipart request.
         const fd = new FormData()
         Object.keys(this.form).forEach(k => fd.append(k, this.form[k]))
         if (this.file) fd.append('file', this.file)
         const { data } = await api.put('/users/profile', fd, { headers: { 'Content-Type': 'multipart/form-data' } })
+        // Refresh navbar/sidebar identity details from latest server response.
         store.updateUser(data)
         this.success = true
       } catch (err) {

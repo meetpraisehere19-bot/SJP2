@@ -105,8 +105,10 @@ export default {
       this.error = ''
       try {
         const payload = { ...this.form }
+        // Convert comma-separated UI input into an array expected by the API.
         if (this.skillsStr) payload.skills = this.skillsStr.split(',').map(s => s.trim())
         if (payload.salaryMin || payload.salaryMax) {
+          // Map UI min/max fields into nested salary object used by Job model.
           payload.salary = { min: Number(payload.salaryMin) || 0, max: Number(payload.salaryMax) || 0 }
         }
         delete payload.salaryMin

@@ -79,6 +79,7 @@ export default {
     async updateStatus(app, status) {
       try {
         await api.put(`/applications/${app._id}/status`, { status })
+        // Update local row immediately after successful save.
         app.status = status
       } catch (err) {
         console.error(err)

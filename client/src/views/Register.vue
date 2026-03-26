@@ -98,6 +98,7 @@ export default {
       this.loading = true
       try {
         const { data } = await api.post('/auth/register', this.form)
+        // Registration returns token + user; start session immediately.
         store.login(data.token, data.user)
         this.$router.push(`/${data.user.role}/dashboard`)
       } catch (err) {

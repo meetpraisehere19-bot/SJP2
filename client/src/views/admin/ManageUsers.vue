@@ -81,6 +81,7 @@ export default {
     async fetchUsers() {
       this.loading = true
       try {
+        // Reuse one endpoint with role filter query param.
         const params = {}
         if (this.filter) params.role = this.filter
         const { data } = await api.get('/admin/users', { params })
@@ -110,6 +111,7 @@ export default {
       if (!confirm(`Delete ${user.firstName} ${user.lastName}? This cannot be undone.`)) return
       try {
         await api.delete(`/admin/users/${user._id}`)
+        // Keep table in sync without forcing a full refetch.
         this.users = this.users.filter(u => u._id !== user._id)
       } catch (err) {
         console.error(err)

@@ -100,6 +100,7 @@ export default {
   methods: {
     async fetchJob() {
       try {
+        // Uses the dynamic route id (/jobs/:id) to load this job's details.
         const { data } = await api.get(`/jobs/${this.$route.params.id}`)
         this.job = data
       } catch (err) {
@@ -114,6 +115,7 @@ export default {
       this.applyError = ''
       this.applying = true
       try {
+        // Multipart payload supports optional resume upload with text fields.
         const formData = new FormData()
         formData.append('jobId', this.job._id)
         formData.append('coverLetter', this.coverLetter)
@@ -138,6 +140,7 @@ export default {
     },
     nl2br(text) {
       if (!text) return ''
+      // Escape HTML first, then preserve line breaks for safe rich text display.
       const escaped = text.replace(/&/g, '&amp;').replace(/</g, '&lt;').replace(/>/g, '&gt;')
       return escaped.replace(/\n/g, '<br>')
     }
