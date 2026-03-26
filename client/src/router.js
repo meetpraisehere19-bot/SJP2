@@ -56,6 +56,10 @@ const router = createRouter({
   routes
 })
 
+// Route meta contract:
+// - auth: route requires login
+// - guest: route is only for logged-out users
+// - role: logged-in user must match this role
 router.beforeEach((to, from, next) => {
   if (to.meta.auth && !store.isLoggedIn) {
     return next('/login')

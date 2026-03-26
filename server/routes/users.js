@@ -8,6 +8,7 @@ const router = express.Router();
 // Update profile  
 router.put('/profile', auth, upload.single('file'), async (req, res) => {
   try {
+    // Allowlist prevents arbitrary field updates from request payloads.
     const allowed = ['firstName', 'lastName', 'phone', 'bio', 'university', 'major', 'graduationYear', 'skills', 'companyName', 'companyWebsite', 'companyDescription', 'industry'];
     const updates = {};
 
@@ -22,6 +23,7 @@ router.put('/profile', auth, upload.single('file'), async (req, res) => {
     });
 
     if (req.file) {
+      // Reuse one upload field: students upload resume, employers upload company logo.
       if (req.user.role === 'student') updates.resume = req.file.filename;
       if (req.user.role === 'employer') updates.companyLogo = req.file.filename;
     }

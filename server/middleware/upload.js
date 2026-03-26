@@ -7,12 +7,14 @@ const storage = multer.diskStorage({
     cb(null, path.join(__dirname, '../uploads'));
   },
   filename: (req, file, cb) => {
+    // Randomized filename avoids collisions and hides original filenames.
     const uniqueName = crypto.randomBytes(16).toString('hex') + path.extname(file.originalname);
     cb(null, uniqueName);
   }
 });
 
 const fileFilter = (req, file, cb) => {
+  // Shared upload middleware supports student resumes and employer logos.
   const allowedTypes = ['.pdf', '.doc', '.docx', '.png', '.jpg', '.jpeg'];
   const ext = path.extname(file.originalname).toLowerCase();
   if (allowedTypes.includes(ext)) {

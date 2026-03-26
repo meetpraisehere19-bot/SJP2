@@ -1,6 +1,7 @@
 import { reactive } from 'vue'
 
 export const store = reactive({
+  // Hydrate auth state from localStorage so refresh keeps the session.
   user: JSON.parse(localStorage.getItem('user') || 'null'),
   token: localStorage.getItem('token') || null,
 
@@ -23,6 +24,7 @@ export const store = reactive({
   login(token, user) {
     this.token = token
     this.user = user
+    // Keep auth state persistent across browser reloads.
     localStorage.setItem('token', token)
     localStorage.setItem('user', JSON.stringify(user))
   },

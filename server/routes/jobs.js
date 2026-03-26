@@ -17,6 +17,7 @@ router.get('/', async (req, res) => {
     if (type) filter.type = type;
     if (location) filter.location = { $regex: location, $options: 'i' };
 
+    // Basic page/limit pagination for job list pages.
     const skip = (parseInt(page) - 1) * parseInt(limit);
     const jobs = await Job.find(filter)
       .populate('employer', 'companyName companyLogo industry')
@@ -74,6 +75,7 @@ router.post('/', auth, authorize('employer'), [
     }
 
     if (!req.user.isApproved) {
+      // Employer accounts must be approved by admin before posting.
       return res.status(403).json({ message: 'Your employer account is pending approval' });
     }
 

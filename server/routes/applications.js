@@ -33,6 +33,7 @@ router.post('/', auth, authorize('student'), upload.single('resume'), async (req
     });
 
     await application.save();
+    // Keep denormalized applicant count on the job in sync for faster listing views.
     await Job.findByIdAndUpdate(jobId, { $inc: { applicantCount: 1 } });
 
     res.status(201).json(application);
@@ -81,6 +82,7 @@ router.put('/:id/status', auth, authorize('employer'), async (req, res) => {
     const application = await Application.findById(req.params.id).populate('job');
 
     if (!application) return res.status(404).json({ message: 'Application not found' });
+    // Employers can only update applications for their own job posts.
     if (application.job.employer.toString() !== req.user._id.toString()) {
       return res.status(403).json({ message: 'Access denied' });
     }

@@ -15,6 +15,7 @@ const app = express();
 // Middleware
 app.use(cors());
 app.use(express.json());
+// Expose uploaded files so stored resume/logo filenames are retrievable by URL.
 app.use('/uploads', express.static(path.join(__dirname, 'uploads')));
 
 // Routes
