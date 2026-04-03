@@ -1,7 +1,7 @@
 const jwt = require('jsonwebtoken');
 const User = require('../models/User');
 
-// Verify JWT token
+// Verify JWT and load user for protected routes.
 const auth = async (req, res, next) => {
   try {
     const header = req.header('Authorization');
