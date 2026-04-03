@@ -4,7 +4,7 @@
     <section class="hero">
       <div class="container">
         <h1>Find Your <span class="highlight">Dream Job</span></h1>
-        <p class="hero-sub">Connect with top employers. Launch your career with the JSA Portal!.</p>
+        <p class="hero-sub">Connect with top employers. Launch your career with the JSA Portal!</p>
         <div class="hero-actions">
           <router-link to="/register" class="btn btn-primary btn-lg">Get Started</router-link>
           <router-link to="/jobs" class="btn btn-secondary btn-lg">Browse Jobs</router-link>
