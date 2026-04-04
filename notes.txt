@@ -12,6 +12,11 @@ username: calvin@example.com
 
 RUNNING THE APP
 
+ENSURE ADMIN ACCOUNT EXISTS
+
+cd server
+node seed.js
+
 BACKEND
 cd C:\Users\Prazz\OneDrive\Desktop\SJP2\server
 npm run dev
