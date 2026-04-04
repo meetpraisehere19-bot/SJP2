@@ -19,3 +19,8 @@ npm run dev
 FRONTEND
 cd C:\Users\Prazz\OneDrive\Desktop\SJP2\client
 npm run dev
+
+
+FEATURE IMPLEMATIONS
+- 'Part-Time' may need to feature a 'per hour' payment structure
+- Company benefits and such.
