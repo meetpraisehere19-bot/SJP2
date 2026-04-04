@@ -3,8 +3,8 @@ password: admin123
 username: admin@sjp2.com
 
 employer logs
-password: employer@example.com
-username: pass123
+password: james@example.com
+username: james123
 
 
 RUNNING THE APP
