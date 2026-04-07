@@ -3,9 +3,11 @@ password: admin123
 username: admin@sjp2.com
 
 employer logs
+// IT Company: RedTech
 username: james@example.com
 password: james123
 
+//Fashion Company: SouthFace
 password: calvin123
 username: calvin@example.com
 
