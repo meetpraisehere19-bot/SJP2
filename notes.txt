@@ -2,6 +2,10 @@ admin logs
 password: admin123
 username: admin@sjp2.com
 
+student logs
+password: kale123
+username: kale@example.com
+
 employer logs
 // IT Company: RedTech
 username: james@example.com
